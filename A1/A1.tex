@@ -1,0 +1,333 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{parskip}
+\usepackage{xifthen, xparse}
+
+\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
+\algtext*{Indent}
+\algtext*{EndIndent}
+
+
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\newcommand\rowop[1]{\scriptstyle\smash{\xrightarrow[\vphantom{#1}]{\mkern-4mu#1\mkern-4mu}}}
+
+\DeclareDocumentCommand\converttorows%
+{>{\SplitList{,}}m}%
+{\ProcessList{#1}{\converttorow}}
+\NewDocumentCommand{\converttorow}{m}
+{\ifthenelse{\isempty{#1}}{}{\rowop{#1}}\\}
+
+\DeclareDocumentCommand \rowops{m}
+{\;
+ \begin{matrix}
+\converttorows {#1}
+ \end{matrix}
+ \; }
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{SOFTENG250 Assignment \#1}
+\newcommand{\hmwkClass}{D.S. and Algorithms}
+\newcommand{\hmwkAuthorName}{\textbf{Nisarag Bhatt}}
+
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \textmd{\textbf{ID Number: \idnumber}}\\
+    \textmd{\textbf{UPI: \upi}}\\
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+
+\pagebreak
+
+\begin{homeworkProblem}
+
+ Let $C$ be a set consisting of $n$ companies, and $A$ be a set consisting of $m$ applicants. Consider the set $C \times A$ of all ordered pairs of the form $(c, a)$, where $c \in C$ and $a \in A$.
+ 
+\textbf{Part A and B}
+ 
+How many ordered pairs are there?, and explain your answer.
+
+\textbf{Solution}
+
+There would be $m \times n$ ordered pairs. 
+
+For each $c \in C$, there are $m$ possible pairs in the form of $(c, a)$ ($a$ is an element of $A$, where the size of set $A$ is $m$)
+
+Since there are $n$ elements in $C$, the size of $C \times A$ is $n \times m$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+Solve all exercises in LN1.
+
+\textbf{Exercise 1.
+ Explain why there are exactly $n!$ perfect matchings.}
+ 
+ Since the first company gets $n$ applicants to choose from and then the second company gets $n-1$ applicants to choose from, so there will be $n\cdot (n-1) \cdot (n-2)\cdot  ... \cdot 1 = n!$ sets of perfect matchings.
+ 
+\textbf{Exercise 2.
+ Assume that $C=\left\{c_1, c_2, c_3\right\}$ and $A=\left\{a_1, a_2, a_3\right\}$.}
+ 
+ - \textbf{Set up a preference list for all companies and all applicants.}
+ 
+ Preference List:
+ 
+ \begin{align*}
+     c_1 &: a_1 > a_2 > a_3 ~~~~~~~~ a_1: c_1 > c_2 > c_3 \\
+     c_2 &: a_2 > a_1 > a_3 ~~~~~~~~ a_2: c_2 > c_1 > c_3 \\
+     c_3 &: a_3 > a_1 > a_2 ~~~~~~~~ a_3: c_3 > c_1 > c_2 \\
+ \end{align*}
+ 
+ - \textbf{List all possible perfect matchings for your preference lists. List all stable matchings for your preference list.}
+ 
+ Perfect Matching:
+ \begin{align*}
+ M_{1} &= \{(c_1,a_1), (c_2,a_2), (c_3,a_3)\} ~~~ \textbf{This is a stable matching} \\
+ M_{2} &= \{(c_1,a_1), (c_2,a_3), (c_3,a_2)\} ~~~ \text{Not stable}\\
+ M_{3} &= \{(c_1,a_2), (c_2,a_3), (c_3,a_1)\} ~~~ \text{Not stable}\\
+ M_{4} &= \{(c_1,a_2), (c_2,a_1), (c_3,a_3)\} ~~~ \text{Not stable}\\
+ M_{5} &= \{(c_1,a_3), (c_2,a_1), (c_3,a_2)\} ~~~ \text{Not stable}\\
+ M_{6} &= \{(c_1,a_3), (c_2,a_2), (c_3,a_1)\} ~~~ \text{Not stable}\\
+ \end{align*}
+ 
+
+\textbf{Exercise 3.
+In the last part of our argument above (in lecture notes) $M_2$ is obtained from $M_1$ by removing $(c', a)$ from $M_1$ and adding $(c, a)$ to $M_1$. Write down your reasons explaining why $M_2$ is a matching.}
+
+By definition: For $M_{k}$ to be matching, it is required that every member $c \in C$ and every member $a \in A$  appears in at most one pair in $M_k$.
+
+Since $M_1$ is matching and as it goes through the iteration we are removing a pair $(c',a)$ and adding $(c,a)$ to produce $M_2$, and since it is not necessary for $c'$ to have a pair in $M_2$ for it to be matching we can conclude that $M_2$ is indeed matching.
+
+
+\textbf{Exercise 4. Finish the proof by showing that every applicant $a$ must have a pair in $M$.}
+
+ For this proof, we shall use proof by contradiction.
+ 
+ Assume that applicant $a$ does not have a pair in $M$ then after the last iteration we are left with one applicant who still doesn't have a pair however since it was the last iteration of the loop, it must have ended because all companies and applicants have matched (this is also assuming the fact that there are $n$ companies and $n$ applicants) therefore we have a contradiction because this would imply there are more companies than applicants which is not the case.
+ 
+ QED.
+ 
+ \textbf{Exercise 5. We postulated that the number of companies equals the number of applicants. Suppose we remove this postulate. What will the size of input data be in this case?}
+ 
+ Let $C=\{c_1,c_2,...,c_m\}$ and $A=\{a_1,a_2,...,a_n\}$
+ 
+ The size of the input data now will be $n+m+2mn$ since we represent companies and applicants as single arrays of size $n$ and $m$ respectively and we represents the company and applicants preferences as a $m \times n$ double array. 
+ 
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{Exercise 1. Write  down  an  algorithm  that  given  input $\{t_1,...,t_n\}$ of texts, outputs those texts $t$ that contain any of the following words: exchange, escape, data and stream. What do you think the size of the input is in this example?}
+
+\begin{algorithm}
+\caption{findWords(T)}\label{euclid}
+\begin{algorithmic}[1]
+\State \text{Initialize array of size $n$ to store texts (Call this array $r$)}
+\State \text{Initialize an array of size 4 to store words: exchange, escape, data and stream (Call this array $w$)}
+\State For $i = 1$ to $n$
+\Indent
+    \State      For $j = 0$ to $3$ 
+        \Indent
+            \State - If any word $w_j$ is found in $t_i$ 
+                \Indent
+                    \State - Store $t_i$ in $r$
+                \EndIndent
+        \EndIndent
+        \State End inner for loop
+\EndIndent
+\State End outer for loop
+\State Return $r$
+\end{algorithmic}
+\end{algorithm}
+
+The input size would be the size of the input array $T$ and how many texts it contains so in this case it would be $n$, however these texts may contain more than one word and hence encode more bytes - so if a text contains $m$ words the input size could be $m \times n$
+
+\textbf{Exercise 2. Explain why $Merge(A,B)$ - algorithm produces a sorted array. For simplicity you can assume that all elements in $A$ and $B$ are pairwise distinct.}
+
+If we look at the algorithm for Merge we can see that it takes two sorted arrays $A$ and $B$ and loops through the arrays until there are no elements left, since the algorithm compares the elements at the pointers - it always takes the smallest element out of the two lists and appends that one to the output list so our output list will always be sorted. Also in the case if both lists are different sizes, the largest sized list will automatically be appended to the end of the return list and since that list is sorted it will always output a sorted list.
+
+\textbf{Exercise 3. For this exercise, the sizes of $n$ and $m$ are the lengths of the decimal representations of $n$ and $m$. Explain why Euclidean algorithm runs in time proportional to the size of the input. For the analysis assume that the division process takes a constant amount of time}
+
+Since we can assume the division process takes a constant time, and all other operations such as setting and if statements take constant time (i.e. $\mathcal{O}(c)$) and we can say that the while loop runs at an arbitrary time $t$ so $\mathcal{O}(x)$ (where $x > 0$ and $x=f(n,m)$) so we can say that the whole algorithm will have a time complexity of $\mathcal{O}(c+x)=\mathcal{O}(x)$.
+
+From this we can see that the number of times the while loop runs determines the complexity of the algorithm, furthermore since the loop depends on the inputs $n$ , $m$ we can say that $\mathcal{O}(x)=\mathcal{O}(n+m)$
+
+Therefore the only thing that would change the time of the algorithm would be the input $n$ and $m$ and hence proportional.
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{Consider  the  GS-algorithm.  Let $M$ be  the  output  of  the  algorithm.  We  know  (from  the lecture) that $M$ is a stable matching.}
+
+\textbf{Say that an applicant $x$ is unlucky according to $M$ if the matching $M$ assigns company $c$ to the applicant $x$ so that $c$ is the worst ranked company in the applicant’s preference list. Is it possible that all applicant are unlucky according to $M$? If so, then give such an example with $3$ applicants and $3$ companies. If not, explain your answer in brief.}
+
+Consider the case where 
+
+Preference List:
+ \begin{align*}
+     c_1 &: a_1 > a_2 > a_3 ~~~~~~~~ a_1: c_3 > c_2 > c_1 \\
+     c_2 &: a_2 > a_3 > a_1 ~~~~~~~~ a_2: c_1 > c_3 > c_2 \\
+     c_3 &: a_3 > a_1 > a_2 ~~~~~~~~ a_3: c_2 > c_1 > c_3 \\
+ \end{align*}
+ 
+ From this we can see all companies have different applicants on the top of their preference list, and all these applicant don't rank these companies back very highly.
+ 
+ After the lists go through the algorithm it can be seen that this is the matching produced: $$\{(c_1,a_1), (c_2,a_2), (c_3,a_3)\}$$
+ 
+ As the companies give out their offers and the applicants receive their offers they have to accept since there are no more offers because all applicants have to accept since it is the best option and thus all applicants are stuck with their least preferred company and all companies have their most preferred applicant and thus all applicants are considered to be unlucky.
+
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{As  above,  let $M$ be  the  output  of  the  GS-algorithm.  Assume  that  company $c$ ranks an applicant $x$ first; also assume that the applicant $x$, too, ranks $c$ first. Does this imply that the pair $(c, x)$ belongs to $M?$ Answer the question as false or true, and explain your answer in brief.}
+
+True: Since company $c$ has $x$ at the top of it preference list, it means that the company doesn't prefer any other applicant at all and the same goes for the applicant, they only prefer $c$ and $c$ only therefore the algorithm will match them together and the pair $(c,x)$ (since it is the best offer) will indeed be in $M$ and hence it will be a stable matching.
+
+\end{homeworkProblem}
+
+Using an integral approximation of the sum of the logarithms of the first $n$ natural numbers gives:
+
+$$n \log n - n=\int_{1}^n\log(t)dt\leq\underbrace{\sum_{k=1}^n\text{log}(n)}_{\log(n!)}\leq \int_{1}^{n+1}\text{log}(t)dt=\underbrace{(n+1)\log(n+1)-(n+1)}_{n\log(n)-n-1+\log(n)+(n+1)\log(1+1/n)}\\\implies n\log(n)-n\leq \log(n!)\leq n\log(n)-n+\underbrace{\left[-1+\log(n+1)+(n+1)\log(1+1/n)\right]}_{\delta(n)}\\\implies n\log(n)-n\leq \log(n!)\leq n\log(n)-n+\delta(n)\\\implies -n\log(n)+n\geq -\log(n!)\geq -n\log(n)+n-\delta(n)\\\implies -n\log(n)+n-\delta(n)\leq -\log(n!)\leq -n\log(n)+n\\\implies n-\delta(n)\leq\underbrace{n\log(n)-\log(n!)}_{\log(\frac{n^n}{n!})}\leq n\implies 1-\frac{\delta(n)}{n}\leq \frac{\log(\frac{n^n}{n!})}{n}\leq n$$
+
+However we have that: $$\small -\frac{3\log(n)}{n}\leq -\frac{\log(n)}{n}-\underbrace{2\log(e^{1/n})}_{\large{\frac{2}{n}}}\leq-\frac{\log(n)}{n}-2\log(1+1/n)\leq\underbrace{\frac{1}{n}-\frac{\log(n)}{n}-\frac{n+1}{n}\log(1+1/n)}_{{\large -\frac{\delta(n)}{n}}}\\\implies -\frac{3\log(n)}{n}\leq -\frac{\delta(n)}{n}\implies 1-\frac{3\log(n)}{n}\leq1-\frac{\delta(n)}{n}$$
+
+Which by our first inequality gives us:
+
+$$1-\frac{3\log(n)}{n}\leq \frac{\log(\frac{n^n}{n!})}{n}\leq 1\implies 1-3\underbrace{\left(\lim_{n\to\infty}\frac{\log(n)}{n}\right)}_{0}\leq\lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}\leq 1\\\implies 1\leq \lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}\leq 1\implies \lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}=1$$
+
+As required.
+
+\end{document}

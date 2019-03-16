@@ -1,0 +1,38 @@
+First split array into two halves and recursively call to find frequency until you hit base case
+
+        $A_l = A[0, \text{lengthOfA}/2]$ and $A_r=A[\text{lengthOfA}/2 + 1, \text{lengthOfA}]$
+
+        \begin{itemize}
+            \item Let $F_l$ = FindMajorityElement$(A_l)$
+            \item Let $F_r$ = FindMajorityElement$(A_r)$
+        \end{itemize}
+
+        Now check $F_l$ and $F_r$
+
+        \begin{itemize}
+            \item If $F_l$ equals the sentinel value and $F_r$ is greater than $0$ then
+                \begin{itemize}
+                    \item return $F_r$
+                \end{itemize}
+            \item If $F_r$ equals the sentinel value and $F_l$ is greater than $0$ then 
+                \begin{itemize}
+                    \item return $F_l$
+                \end{itemize}
+        \end{itemize}
+
+        \begin{itemize}
+            \item If $F_l$ equals $F_r$ then 
+                \begin{itemize}
+                    \item return $F_l$ else return sentinel value
+                \end{itemize}
+        \end{itemize}
+
+        To analyze the running time of our algorithm we can see that at each level, two calls are made recursively
+        with each array having half the size of the original array.
+
+        For the non-recursive costs, we can see that
+        at each level, we have to compare each number at most twice (which only happens in the last case
+        described above). Therefore, the non-recursive cost is at most $n$ comparisons when the procedure
+        is called with an array of size $n$.
+
+        Therefore our recurrence relation is $T(n)= 2T(n/2) + n$ and by master theorem we get that $T(n)=\mathcal{O}(n \log(n))$

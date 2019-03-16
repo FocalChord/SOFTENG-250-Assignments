@@ -1,0 +1,33 @@
+\documentclass[tikz,margin=3mm]{standalone}
+\usetikzlibrary{trees}
+
+\begin{document}
+    \begin{tikzpicture}[
+   level distance = 1.5cm,
+   level 1/.style = {sibling distance=1.3cm},
+   level 2/.style = {sibling distance=1.0cm},
+   level 3/.style = {sibling distance=0.8cm},
+every node/.style = {circle,draw},
+       lbl/.style = {rectangle, draw=none, #1,% position
+                     font=\footnotesize}
+                        ]
+%
+\node (Root) [red] {e}
+    child {node {a}
+        child {node {b}
+            child {node {c}
+            edge from parent node[lbl=left] {$bc$}
+            }
+        edge from parent node[lbl=left] {$ab$}
+       }
+    child {node {d}
+    edge from parent node[lbl=right] {$ad$}
+        }
+    edge from parent node[lbl=left] {$ea$}
+      }
+    child { node {h}}
+    child { node {f}
+        child { node {g} }
+          };
+    \end{tikzpicture}
+\end{document}
