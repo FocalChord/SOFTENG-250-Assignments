@@ -318,16 +318,6 @@ True: Since company $c$ has $x$ at the top of it preference list, it means that 
 
 \end{homeworkProblem}
 
-Using an integral approximation of the sum of the logarithms of the first $n$ natural numbers gives:
 
-$$n \log n - n=\int_{1}^n\log(t)dt\leq\underbrace{\sum_{k=1}^n\text{log}(n)}_{\log(n!)}\leq \int_{1}^{n+1}\text{log}(t)dt=\underbrace{(n+1)\log(n+1)-(n+1)}_{n\log(n)-n-1+\log(n)+(n+1)\log(1+1/n)}\\\implies n\log(n)-n\leq \log(n!)\leq n\log(n)-n+\underbrace{\left[-1+\log(n+1)+(n+1)\log(1+1/n)\right]}_{\delta(n)}\\\implies n\log(n)-n\leq \log(n!)\leq n\log(n)-n+\delta(n)\\\implies -n\log(n)+n\geq -\log(n!)\geq -n\log(n)+n-\delta(n)\\\implies -n\log(n)+n-\delta(n)\leq -\log(n!)\leq -n\log(n)+n\\\implies n-\delta(n)\leq\underbrace{n\log(n)-\log(n!)}_{\log(\frac{n^n}{n!})}\leq n\implies 1-\frac{\delta(n)}{n}\leq \frac{\log(\frac{n^n}{n!})}{n}\leq n$$
-
-However we have that: $$\small -\frac{3\log(n)}{n}\leq -\frac{\log(n)}{n}-\underbrace{2\log(e^{1/n})}_{\large{\frac{2}{n}}}\leq-\frac{\log(n)}{n}-2\log(1+1/n)\leq\underbrace{\frac{1}{n}-\frac{\log(n)}{n}-\frac{n+1}{n}\log(1+1/n)}_{{\large -\frac{\delta(n)}{n}}}\\\implies -\frac{3\log(n)}{n}\leq -\frac{\delta(n)}{n}\implies 1-\frac{3\log(n)}{n}\leq1-\frac{\delta(n)}{n}$$
-
-Which by our first inequality gives us:
-
-$$1-\frac{3\log(n)}{n}\leq \frac{\log(\frac{n^n}{n!})}{n}\leq 1\implies 1-3\underbrace{\left(\lim_{n\to\infty}\frac{\log(n)}{n}\right)}_{0}\leq\lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}\leq 1\\\implies 1\leq \lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}\leq 1\implies \lim_{n\to\infty}\frac{\log(\frac{n^n}{n!})}{n}=1$$
-
-As required.
 
 \end{document}
